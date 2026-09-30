@@ -48,6 +48,16 @@ hl.bind(
     hl.dsp.exec_cmd(noctCall .. "session lock")
 )
 
+----------------------
+---- DISPLAY MODE ----
+----------------------
+
+-- Fn + F4 / display switch key
+hl.bind(
+    "XF86Display",
+    hl.dsp.exec_cmd("~/.config/hypr/scripts/switch-display.sh")
+)
+
 ---------------------------
 ---- DEFAULT SHORTCUTS ----
 ---------------------------

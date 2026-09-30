@@ -65,8 +65,8 @@ font_scale = 1.05
 font_weight = 700
 capsule_padding = 12
 capsule_radius = 80
-capsule_fill = "#89b4fa"
-color = "#1e1e2e"
+capsule_fill = "#1e1e2e"
+color = "#89b4fa"
 
 [widget.cat]
 type = "saeed/animated-cat:cat"

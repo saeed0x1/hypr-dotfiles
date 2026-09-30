@@ -1,0 +1,11 @@
+id = "saeed/workspace-count"
+name = "Workspace Window Count"
+version = "1.0.0"
+plugin_api = 24
+author = "saeed"
+description = "Shows the number of windows in the active Hyprland workspace."
+dependencies = ["hyprctl"]
+
+[[widget]]
+id = "count"
+entry = "widget.luau"

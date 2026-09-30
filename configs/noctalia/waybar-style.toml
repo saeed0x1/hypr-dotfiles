@@ -1,0 +1,156 @@
+# Noctalia bar styled after dotfiles/configs/waybar/{config.jsonc,style.css}.
+# Install as ~/.config/noctalia/waybar-style.toml. Noctalia merges *.toml files.
+
+[bar.default]
+position = "top"
+thickness = 42
+background_opacity = 0.0
+shadow = false
+hover_highlight = false
+concave_edge_corners = false
+radius_top_left = 0
+radius_top_right = 0
+radius_bottom_left = 0
+radius_bottom_right = 0
+margin_ends = 0
+padding = 10
+widget_spacing = 7
+scale = 1.0
+font_family = "JetBrainsMono Nerd Font"
+font_scale = 1.0
+capsule = false
+capsule_fill = "#1e1e2e"
+capsule_foreground = "#cdd6f4"
+capsule_radius = 12
+capsule_padding = 10
+capsule_thickness = 0.72
+start = ["workspace_1", "workspace_2", "workspace_3", "workspace_4", "workspace_5", "window_count", "active_window"]
+center = ["clock"]
+end = ["cat", "media", "cpu", "memory", "temp", "brightness", "battery", "tray", "notifications", "network", "volume", "session"]
+
+[widget.workspace_1]
+type = "saeed/workspace-pills:ws1"
+
+[widget.workspace_2]
+type = "saeed/workspace-pills:ws2"
+
+[widget.workspace_3]
+type = "saeed/workspace-pills:ws3"
+
+[widget.workspace_4]
+type = "saeed/workspace-pills:ws4"
+
+[widget.workspace_5]
+type = "saeed/workspace-pills:ws5"
+
+[widget.active_window]
+capsule = true
+display = "text_only"
+min_length = 120
+max_length = 220
+title_scroll = "on_hover"
+capsule_fill = "#1e1e2e"
+color = "#bac2de"
+
+[widget.window_count]
+type = "saeed/workspace-count:count"
+
+[widget.clock]
+capsule = true
+timezone = "Asia/Kolkata"
+format = "{:%a, %d %b · %I:%M %p}"
+tooltip_format = "{:%A, %d %B %Y · %I:%M:%S %p}"
+scale = 1.0
+font_scale = 1.05
+font_weight = 700
+capsule_padding = 12
+capsule_radius = 80
+capsule_fill = "#89b4fa"
+color = "#1e1e2e"
+
+[widget.cat]
+type = "saeed/animated-cat:cat"
+
+[widget.media]
+capsule = true
+hide_when_no_media = true
+title_scroll = "on_hover"
+max_length = 160
+capsule_fill = "#2a2b3d"
+color = "#cdd6f4"
+
+[widget.volume]
+capsule = true
+show_label = true
+capsule_fill = "#1f2130"
+color = "#fab387"
+
+[widget.cpu]
+capsule = true
+type = "sysmon"
+stat = "cpu_usage"
+visualization = "none"
+show_value = true
+capsule_fill = "#272430"
+color = "#f9e2af"
+
+[widget.memory]
+capsule = true
+type = "sysmon"
+stat = "ram_pct"
+visualization = "none"
+show_value = true
+capsule_fill = "#231f31"
+color = "#cba6f7"
+
+[widget.temp]
+capsule = true
+type = "sysmon"
+stat = "cpu_temp"
+visualization = "none"
+show_value = true
+capsule_fill = "#2a2324"
+color = "#fab387"
+
+[widget.brightness]
+capsule = true
+capsule_fill = "#1e1e2e"
+color = "#cdd6f4"
+
+[widget.battery]
+capsule = true
+capsule_fill = "#1f2a25"
+color = "#a6e3a1"
+
+[widget.tray]
+capsule = true
+capsule_fill = "#2a2b3d"
+color = "#cdd6f4"
+
+[widget.notifications]
+capsule = true
+capsule_fill = "#1e1e2e"
+color = "#cba6f7"
+
+[widget.network]
+capsule = true
+capsule_fill = "#1e2630"
+color = "#94e2d5"
+
+[widget.session]
+capsule = true
+capsule_fill = "#2a2026"
+color = "#f38ba8"
+
+[plugins]
+enabled = ["saeed/workspace-count", "saeed/animated-cat", "saeed/workspace-pills"]
+
+[shell.panel]
+transparency_mode = "solid"
+control_center_placement = "floating"
+control_center_position = "auto"
+wallpaper_placement = "floating"
+wallpaper_position = "auto"
+borders = true
+shadow = true
+list_item_background = true

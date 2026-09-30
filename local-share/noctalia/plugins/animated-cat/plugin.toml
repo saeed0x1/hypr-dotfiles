@@ -1,0 +1,10 @@
+id = "saeed/animated-cat"
+name = "Animated Cat"
+version = "1.0.0"
+plugin_api = 24
+author = "saeed"
+description = "Alternates the two cat faces from the Waybar dotfiles."
+
+[[widget]]
+id = "cat"
+entry = "widget.luau"

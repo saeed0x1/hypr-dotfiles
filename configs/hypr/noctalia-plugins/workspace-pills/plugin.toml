@@ -1,0 +1,57 @@
+id = "saeed/workspace-pills"
+name = "Workspace Pills"
+version = "1.0.0"
+plugin_api = 24
+author = "saeed"
+description = "Five Hyprland workspace buttons matching the window count capsule."
+dependencies = ["hyprctl"]
+
+[[widget]]
+id = "ws1"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key = "number"
+  type = "int"
+  label_key = "settings.workspace.label"
+  default = 1
+
+[[widget]]
+id = "ws2"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key = "number"
+  type = "int"
+  label_key = "settings.workspace.label"
+  default = 2
+
+[[widget]]
+id = "ws3"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key = "number"
+  type = "int"
+  label_key = "settings.workspace.label"
+  default = 3
+
+[[widget]]
+id = "ws4"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key = "number"
+  type = "int"
+  label_key = "settings.workspace.label"
+  default = 4
+
+[[widget]]
+id = "ws5"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key = "number"
+  type = "int"
+  label_key = "settings.workspace.label"
+  default = 5

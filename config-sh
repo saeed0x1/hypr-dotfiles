@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+# Back up the current Hyprland/Noctalia setup into ~/Projects/dotfiles.
+
+set -euo pipefail
+
+REPO_DIR="$HOME/Projects/dotfiles"
+CONFIG_DIR="$REPO_DIR/configs"
+LOCAL_SHARE_DIR="$REPO_DIR/local-share"
+WALLPAPER_DIR="$REPO_DIR/wallpapers"
+GITHUB_BRANCH="main"
+
+if ! command -v rsync >/dev/null 2>&1; then
+    echo "Missing dependency: rsync"
+    exit 1
+fi
+
+mkdir -p "$CONFIG_DIR" "$LOCAL_SHARE_DIR" "$WALLPAPER_DIR"
+
+sync_dir() {
+    local label="$1"
+    local src="$2"
+    local dest="$3"
+    shift 3
+
+    if [ ! -d "$src" ]; then
+        echo "   -> Skipping $label, not found"
+        return
+    fi
+
+    echo "   -> $label"
+    mkdir -p "$dest"
+    rsync -a --delete "$@" "$src"/ "$dest"/
+}
+
+echo "==> Copying configs..."
+
+sync_dir "hypr" "$HOME/.config/hypr" "$CONFIG_DIR/hypr" \
+    --exclude ".git/" \
+    --exclude ".agents/" \
+    --exclude ".codex/" \
+    --exclude "dotfiles/"
+
+sync_dir "noctalia" "$HOME/.config/noctalia" "$CONFIG_DIR/noctalia"
+sync_dir "fish" "$HOME/.config/fish" "$CONFIG_DIR/fish"
+sync_dir "kitty" "$HOME/.config/kitty" "$CONFIG_DIR/kitty"
+sync_dir "waybar" "$HOME/.config/waybar" "$CONFIG_DIR/waybar"
+sync_dir "wlogout" "$HOME/.config/wlogout" "$CONFIG_DIR/wlogout"
+sync_dir "wofi" "$HOME/.config/wofi" "$CONFIG_DIR/wofi"
+
+echo "==> Copying local share data..."
+
+sync_dir "noctalia plugins" \
+    "$HOME/.local/share/noctalia/plugins" \
+    "$LOCAL_SHARE_DIR/noctalia/plugins"
+
+echo "==> Copying wallpapers..."
+
+if [ -d "$HOME/Pictures/wallpapers" ]; then
+    sync_dir "wallpapers" "$HOME/Pictures/wallpapers" "$WALLPAPER_DIR"
+elif [ -d "$HOME/Pictures/wallpaper" ]; then
+    sync_dir "wallpaper" "$HOME/Pictures/wallpaper" "$WALLPAPER_DIR"
+else
+    echo "   -> Wallpaper folder not found"
+fi
+
+echo "==> Cleaning cache/temp files..."
+
+find "$CONFIG_DIR" "$LOCAL_SHARE_DIR" -type f \
+    \( -name "*.log" -o -name "*.tmp" -o -name "*.cache" -o -name ".DS_Store" \) \
+    -delete
+
+cd "$REPO_DIR"
+
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "==> Git add..."
+    git add .
+
+    date_stamp="$(date +"%Y-%m-%d %H:%M:%S")"
+
+    echo "==> Commit..."
+    git commit -m "Updated dotfiles: $date_stamp" || echo "No changes to commit"
+
+    echo "==> Push..."
+    git push origin "$GITHUB_BRANCH"
+else
+    echo "==> Skipping git commit, $REPO_DIR is not a git repository"
+fi
+
+echo ""
+echo "========================="
+echo " Dotfiles backup complete!"
+echo "========================="

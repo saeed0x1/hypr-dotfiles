@@ -1,0 +1,38 @@
+# Catppuccin Mocha GRUB theme for this Hyprland setup.
+
+title-text: ""
+desktop-image: "background.png"
+desktop-color: "#11111b"
+terminal-font: "Terminus Regular 18"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
++ boot_menu {
+  left = 12%
+  top = 38%
+  width = 76%
+  height = 50%
+  item_font = "Ubuntu Regular 20"
+  item_color = "#bac2de"
+  selected_item_color = "#11111b"
+  icon_width = 36
+  icon_height = 36
+  item_icon_space = 16
+  item_height = 42
+  item_padding = 4
+  item_spacing = 10
+  selected_item_pixmap_style = "select_*.png"
+}
+
++ label {
+  left = 12%
+  top = 30%
+  align = "left"
+  id = "__timeout__"
+  text = "Booting in %d seconds"
+  color = "#a6adc8"
+  font = "Ubuntu Regular 20"
+}

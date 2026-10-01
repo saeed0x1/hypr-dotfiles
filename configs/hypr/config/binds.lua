@@ -58,6 +58,28 @@ hl.bind(
     hl.dsp.exec_cmd("~/.config/hypr/scripts/switch-display.sh")
 )
 
+--------------------------
+---- BRIGHTNESS KEYS ----
+--------------------------
+
+-- Fn + F3 / brightness up
+hl.bind(
+    "XF86MonBrightnessUp",
+    hl.dsp.exec_cmd("brightnessctl set +5%"),
+    {
+        repeating = true,
+    }
+)
+
+-- Fn + F2 / brightness down
+hl.bind(
+    "XF86MonBrightnessDown",
+    hl.dsp.exec_cmd("brightnessctl set 5%-"),
+    {
+        repeating = true,
+    }
+)
+
 ---------------------------
 ---- DEFAULT SHORTCUTS ----
 ---------------------------

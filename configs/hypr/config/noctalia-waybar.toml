@@ -26,7 +26,7 @@ capsule_padding = 10
 capsule_thickness = 0.72
 start = ["workspace_1", "workspace_2", "workspace_3", "workspace_4", "workspace_5", "window_count", "active_window"]
 center = ["clock"]
-end = ["cat", "media", "cpu", "memory", "temp", "brightness", "battery", "tray", "notifications", "network", "volume", "session"]
+end = ["cat", "music_button", "memory", "temp", "brightness", "battery", "tray", "notifications", "network", "bluetooth", "volume", "session"]
 
 [widget.workspace_1]
 type = "saeed/workspace-pills:ws1"
@@ -71,28 +71,23 @@ color = "#89b4fa"
 [widget.cat]
 type = "saeed/animated-cat:cat"
 
-[widget.media]
+[widget.music_button]
+type = "custom_button"
+glyph = "music"
+tooltip = "Media controls"
 capsule = true
-hide_when_no_media = true
-title_scroll = "on_hover"
-max_length = 160
-capsule_fill = "#2a2b3d"
+capsule_fill = "#1e1e2e"
 color = "#cdd6f4"
+
+[widget.music_button.actions]
+left = "panel-toggle control-center media"
+right = "media toggle"
 
 [widget.volume]
 capsule = true
 show_label = true
 capsule_fill = "#1f2130"
 color = "#fab387"
-
-[widget.cpu]
-capsule = true
-type = "sysmon"
-stat = "cpu_usage"
-visualization = "none"
-show_value = true
-capsule_fill = "#272430"
-color = "#f9e2af"
 
 [widget.memory]
 capsule = true
@@ -134,8 +129,15 @@ color = "#cba6f7"
 
 [widget.network]
 capsule = true
+show_label = false
 capsule_fill = "#1e2630"
 color = "#94e2d5"
+
+[widget.bluetooth]
+capsule = true
+show_label = false
+capsule_fill = "#1e2630"
+color = "#89b4fa"
 
 [widget.session]
 capsule = true

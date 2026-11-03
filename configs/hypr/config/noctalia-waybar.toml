@@ -26,7 +26,7 @@ capsule_padding = 10
 capsule_thickness = 0.72
 start = ["workspace_1", "workspace_2", "workspace_3", "workspace_4", "workspace_5", "window_count", "active_window"]
 center = ["clock"]
-end = ["cat", "music_button", "volume", "tray", "notifications", "network", "bluetooth", "memory", "temp", "brightness", "battery", "session"]
+end = ["cat", "music_button", "volume", "tray", "notifications", "network", "bluetooth","brightness", "memory", "temp","battery", "session"]
 
 [widget.workspace_1]
 type = "saeed/workspace-pills:ws1"
